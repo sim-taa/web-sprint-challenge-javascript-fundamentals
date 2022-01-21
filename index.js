@@ -199,20 +199,24 @@ CuboidMaker.prototype.volume = function() {
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-console.log(cuboid.volume()); // 100
-console.log(cuboid.surfaceArea()); // 130
+console.log('volume1', cuboid.volume()); // 100
+console.log('SA1', cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
-constructor(length, width, height){
-  this.length = length;
-  this.width = width;
-  this.height = height;
+constructor(properties){
+  this.length = properties.length;
+  this.width = properties.width;
+  this.height = properties.height;
 }
 
 volume(){
+  console.log('volumetyugg', this.length);
+  console.log('volumetyuggwidth', this.width);
+  console.log('volumetyuggheight', this.height);
+
   return this.length * this.width * this.height;
 }
 surfaceArea(){
@@ -221,15 +225,13 @@ surfaceArea(){
 
 }
 
-const cuboidTwo = new CuboidMakerTwo({
-  length: 4,
-  width: 5,
-  height: 5,
-});
+const cuboidTwo = new CuboidMakerTwo(
+  4,5,5,
+);
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-console.log(cuboidTwo.volume()); // 100
-console.log(cuboidTwo.surfaceArea()); // 130
+console.log('volume2', cuboidTwo.volume()); // 100
+console.log('SA2', cuboidTwo.surfaceArea()); // 130
 
 
 
