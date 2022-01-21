@@ -17,7 +17,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 // nestedFunction() can access the variable internal due to closure. From within its local scope, a
-// variable can reach out to collect information in outer layers of the nest and gobal scope.
+// variable can reach out to collect information in outer layers of the nest and/or gobal scope.
 
 
 
@@ -64,13 +64,12 @@ const zooAnimals = [
 
   function animalNames(zooAnimals){
     const displayNames = [];
-    return (`name: ${animal_name}, scientific: ${scientific_name}`)
+    zooAnimals.forEach(function(item){
+      displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`)
+    });
+    return displayNames;
   }
-  
-
-//zooAnimals.forEach(function(item) {
-//  displayNames.push(`name: ${animal_name}, scientific: ${scientific_name}`);
-//});
+  console.log(animalNames(zooAnimals))
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
@@ -78,18 +77,23 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(array){
-    array.map(item.animal_name.toLowerCase());
-  }
+  function lowerCaseNames(zooAnimals){
+     const namesInLowerCase = zooAnimals.map(item.animal_name.toLowerCase());
+     return namesInLowerCase;
+  };
     
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(array){
-    return item.population < 5;
+  function lowPopulationAnimals(zooAnimals){
+    const lowerCountAnimals = zooAnimals.filter(function(item){
+      return item.population < 5;
+    });
+    return lowerCountAnimals;
   }
+console.log(lowPopulationAnimals(zooAnimals))
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -98,9 +102,14 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(zooAnimals){
+    const totalAnimalPop = zooAnimals.reduce(function(acc,item){
+      return acc + item.population;
+    },0);
+    return totalAnimalPop;
   }
+
+  
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -111,30 +120,28 @@ const zooAnimals = [
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
+  function consume(a, b, cb){
+    return cb(a,b);
   }
  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
-    /*Your Code Here*/
-  }
+function add(num1, num2){
+  return num1 + num2;  }
 
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
-  }
+function multiply(num1, num2){
+  return num1 * num2;  }
 
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(firstName, lastName){
+   return `Hello ${firstName} ${lastName}, nice to meet you!`
   }
   
   
